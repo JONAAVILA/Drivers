@@ -1,0 +1,27 @@
+const postHandlerDriver = require('./../../handlers/post/postHandlerDriver');
+
+const postDriver = async (req,res)=>{
+    try {
+        const {
+            name,
+            lastname,
+            description,
+            image,
+            nationality,
+            release,
+            team
+        } = req.body
+
+        const driverPost = await postHandlerDriver(name,
+                                                   lastname,
+                                                   description,
+                                                   image,
+                                                   nationality,
+                                                   release)
+        res.status(200).json(console.log(driverPost))
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+}
+
+module.exports = postDriver;

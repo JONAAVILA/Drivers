@@ -1,4 +1,4 @@
-const driverById = require('./../../handlers/driverById');
+const driverById = require('../../handlers/get/driverById');
 
 const getDriverById = async (req,res)=>{
     try {

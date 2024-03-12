@@ -1,4 +1,4 @@
-const allDrivers = require('./../../handlers/allDrivers');
+const allDrivers = require('../../handlers/get/allDrivers');
 
 const getAllDrivers = async (req,res)=>{
     try {

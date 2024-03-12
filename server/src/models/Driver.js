@@ -6,17 +6,16 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lasName: {
+    lastname: {
       type: DataTypes.STRING,
       allowNull:false
     },
     description: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-    image: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    image:{
+      type: DataTypes.STRING
     },
     nationality: {
       type: DataTypes.STRING,

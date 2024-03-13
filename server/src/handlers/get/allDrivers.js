@@ -7,8 +7,8 @@ const allDrivers = async ()=>{
         const drivers = await axios(URL)
         const driversToDb = await Driver.findAll()
 
-        if(!drivers) throw new Error('Drivers to API not found')
-        if(!driversToDb) throw new Error('Drivers to DB not found')
+        if(drivers.length === 0) console.log('Drivers to API not found')
+        if(driversToDb.length === 0) console.log('Drivers to DB not found')
 
         return {
             api: drivers.data,

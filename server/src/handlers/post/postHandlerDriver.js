@@ -17,14 +17,26 @@ const postHandlerDriver = async (name,
             name,
             lastname,
             description,
+            image,
             nationality,
             release,
         })
-        if(!driverPost && !team){
-            throw new Error('Error to create driver')
-        }else{
-            
+        if(!driverPost) throw new Error('Error to create driver')
+
+        const teamFound = []
+
+        for(teamName of team){
+            teamMatch = await Team.findOne({
+                where:{
+                    name: teamName
+                }
+            })
+            if(teamMatch) teamFound.push(teamMatch)
         }
+
+        await driverPost.addTeam(teamFound)
+        return { message: 'Driver created successfully' }
+         
     } catch (error) {
         return {error:error.message}
     }

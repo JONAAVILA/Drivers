@@ -17,8 +17,9 @@ const postDriver = async (req,res)=>{
                                                    description,
                                                    image,
                                                    nationality,
-                                                   release)
-        res.status(200).json(console.log(driverPost))
+                                                   release,
+                                                   team)
+        res.status(200).json(driverPost)
     } catch (error) {
         res.status(400).json({error:error.message})
     }

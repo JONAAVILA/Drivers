@@ -1,7 +1,8 @@
 import { ALL_DRIVERS } from './ActionsTypes';
 
 const initialState = {
-    drivers: []
+    drivers: [],
+    driversFilteres: []
 }
 
 const rootReducer = (state = initialState, action) =>{
@@ -10,6 +11,11 @@ const rootReducer = (state = initialState, action) =>{
             return{
                 ...state,
                 drivers: action.payload
+            }
+        case FILTER:
+            return{
+                ...state,
+                driversFilteres: action.payload
             }
     
         default:

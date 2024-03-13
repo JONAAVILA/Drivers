@@ -6,8 +6,8 @@ const postDriver = require('./../controllers/post/postDriver');
 
 const router = Router();
 
-router.get('/drivers/:idDriver', getDriverById)
 router.get('/drivers/name', getDriverByName)
+router.get('/drivers/:idDriver', getDriverById)
 router.get('/drivers', getAllDrivers)
 
 router.post('/drivers/create', postDriver)

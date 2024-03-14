@@ -1,4 +1,4 @@
-import { ALL_DRIVERS, FILTER } from './ActionsTypes';
+import { ALL_DRIVERS, SEARCH } from './ActionsTypes';
 
 const initialState = {
     drivers: [],
@@ -12,7 +12,7 @@ const rootReducer = (state = initialState, action) =>{
                 ...state,
                 drivers: action.payload
             }
-        case FILTER:
+        case SEARCH:
             return{
                 ...state,
                 driversFiltered: action.payload

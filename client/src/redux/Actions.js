@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALL_DRIVERS,FILTER } from './ActionsTypes';
+import { ALL_DRIVERS,SEARCH } from './ActionsTypes';
 
 export const allDrivers = ()=>{
     const URL = 'http://localhost:3001/drivers'
@@ -16,7 +16,7 @@ export const allDrivers = ()=>{
 export const searchDrivers = (driver)=>{
     return async (dispatch)=>{
         return dispatch({
-            type: FILTER,
+            type: FILSEARCHTER,
             payload: driver
         })
     }

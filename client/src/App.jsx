@@ -1,11 +1,19 @@
-import './App.css'
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { allDrivers } from './redux/Actions';
 import Landing from './views/landing/Landing';
 import Home from './views/home/Home';
 import Detail from './views/detail/Detail';
 import Form from './views/form/Forma';
+import './App.css'
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+      dispatch(allDrivers())
+  },[])
 
   return (
     <>

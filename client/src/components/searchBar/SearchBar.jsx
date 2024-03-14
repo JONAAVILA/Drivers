@@ -8,14 +8,15 @@ const SearchBar = ()=>{
     const dispatch = useDispatch()
 
     const handleSearch = ()=>{
-        const driver = state.api.find(d => d.name.forename === inputValue) 
+        const value = inputValue[0].toUpperCase() + inputValue.toLowerCase().slice(1)
+        const driver = state.api.find(d => d.name.forename === value) 
         dispatch(searchDrivers(driver))
     }
 
     const handleInputSearch = (event)=>{
         setInputValue(event.target.value)
     }
-    
+
     return(
         <div>
             <div>

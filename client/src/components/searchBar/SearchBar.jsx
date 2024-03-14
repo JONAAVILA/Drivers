@@ -1,18 +1,20 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { searchDrivers } from '../../redux/Actions'
+import { useState } from 'react'
 
 const SearchBar = ()=>{
-
+    const [ inputValue, setInputValue ] = useState("")
     const state = useSelector(state => state.drivers)
+    const dispatch = useDispatch()
 
-    const handleSearch = (event)=>{
-        const name = event.target.value
-        const driverMatch = state.filter(d => {
-            d.name === name
-        })
-        if(!driverMatch) return window.alert('Driver not found')
-
+    const handleSearch = ()=>{
+        const driver = state.api.find(d => d.name.forename === inputValue) 
+        dispatch(searchDrivers(driver))
+        console.log(driver)
     }
-
+    const handleInputSearch = (event)=>{
+        setInputValue(event.target.value)
+    }
     return(
         <div>
             <div>
@@ -26,11 +28,11 @@ const SearchBar = ()=>{
                     <option value="API">API</option>
                     <option value="DB">DB</option>
                 </select>
-                <input type="text" /> 
+                <input value={inputValue} onChange={handleInputSearch} type="text" /> 
                 <button onClick={handleSearch} >search</button>
             </div>
         </div>
     )
-}
+}   
 
 export default SearchBar;

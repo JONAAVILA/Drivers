@@ -1,8 +1,8 @@
-import { ALL_DRIVERS } from './ActionsTypes';
+import { ALL_DRIVERS, FILTER } from './ActionsTypes';
 
 const initialState = {
     drivers: [],
-    driversFilteres: []
+    driversFiltered: []
 }
 
 const rootReducer = (state = initialState, action) =>{
@@ -15,7 +15,7 @@ const rootReducer = (state = initialState, action) =>{
         case FILTER:
             return{
                 ...state,
-                driversFilteres: action.payload
+                driversFiltered: action.payload
             }
     
         default:

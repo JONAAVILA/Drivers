@@ -1,8 +1,9 @@
-import { ALL_DRIVERS, SEARCH } from './ActionsTypes';
+import { ALL_DRIVERS, ALL_TEAMS, ORDER, SEARCH } from './ActionsTypes';
 
 const initialState = {
     drivers: [],
-    driversFiltered: []
+    driversFiltered: [],
+    teams: []
 }
 
 const rootReducer = (state = initialState, action) =>{
@@ -12,7 +13,17 @@ const rootReducer = (state = initialState, action) =>{
                 ...state,
                 drivers: action.payload
             }
+        case ALL_TEAMS:
+            return{
+                ...state,
+                teams: action.payload
+            }
         case SEARCH:
+            return{
+                ...state,
+                driversFiltered: action.payload
+            }
+        case ORDER:
             return{
                 ...state,
                 driversFiltered: action.payload

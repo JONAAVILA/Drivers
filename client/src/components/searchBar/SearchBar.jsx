@@ -25,10 +25,13 @@ const SearchBar = ()=>{
                     <option value="Ascendente">Ascendente</option>
                     <option value="Descendente">Descendente</option>
                 </select>
-                <select name="Filter" id="">
-                    <option value="Team">Team</option>
+                <select name="Origen" id="">
+                    <option value="All">All</option>
                     <option value="API">API</option>
                     <option value="DB">DB</option>
+                </select>
+                <select name="Teams" id="">
+                  // mapear desde state teams todas las opciones  
                 </select>
                 <input value={inputValue} onChange={handleInputSearch} type="text" /> 
                 <button onClick={handleSearch} >search</button>

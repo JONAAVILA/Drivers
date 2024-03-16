@@ -7,29 +7,28 @@ const teamsToDb = async ()=>{
         const drivers = await axios(URL)
         if(!drivers) throw new Error('Drivers not found')
 
-        await Promise.all(drivers.data.map( async d => {
-            if(d.teams.length === 1){
-                Team.findOrCreate({
-                    where:{
-                        name: d.teams
-                    }
-                })
-            }else{
+        const allTeams = []
 
-                const teamsArr = d.teams.split(/\s*,\s*/)
-                await Promise.all( teamsArr.map( async team => {
-                await Team.findOrCreate({
-                            where:{
-                                name:team
-                            }
-                        })
-                }))
-            }
+        drivers.data.map(drivers =>{
+            drivers.teams?.split(/,\s*(?![^()]*\))/).map(team =>{
+                allTeams.push(team.trim())
+            })
+        })
 
+        const TeamsFiltered = new Set(allTeams)
+        const array = Array.from(TeamsFiltered)
+
+        await Promise.all(array.map( async team =>{
+            await Team.findOrCreate({
+                where:{
+                    name:team
+                }
+            })
         }))
-        return {message:'Populated database'}
+
+        return console.log('Populated database with Teams complete')
     } catch (error) {
-        return {error:error.message}
+        return console.log(error)
     }
 }
 

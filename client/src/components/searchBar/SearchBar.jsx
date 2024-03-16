@@ -4,12 +4,13 @@ import { useState } from 'react'
 
 const SearchBar = ()=>{
     const [ inputValue, setInputValue ] = useState("")
-    const state = useSelector(state => state.drivers)
+    const drivers = useSelector(state => state.drivers)
+    const teams = useSelector(state => state.teams)
     const dispatch = useDispatch()
 
     const handleSearch = ()=>{
         const value = inputValue[0].toUpperCase() + inputValue.toLowerCase().slice(1)
-        const driver = state.api.find(d => d.name.forename === value) 
+        const driver = drivers.api.find(d => d.name.forename === value) 
         dispatch(searchDrivers(driver))
     }
 
@@ -31,7 +32,11 @@ const SearchBar = ()=>{
                     <option value="DB">DB</option>
                 </select>
                 <select name="Teams" id="">
-                  // mapear desde state teams todas las opciones  
+                  {teams.map(team =>{
+                        return(
+                            <option key={team.id} value={team.name}>{team.name}</option>
+                        )
+                  })} 
                 </select>
                 <input value={inputValue} onChange={handleInputSearch} type="text" /> 
                 <button onClick={handleSearch} >search</button>

@@ -24,10 +24,18 @@ const rootReducer = (state = initialState, action) =>{
                 driversFiltered: action.payload
             }
         case ORDER:
-            return{
-                ...state,
-                driversFiltered: action.payload
+            const filterOrder = [...state.drivers]
+            if (action.payload === "A") {
+                filterOrder.sort((a, b) => a.name.localeCompare(b.name))
+            }else if(action.payload === "Random"){
+                filterOrder.sort(() => Math.random() - 0.5)
+            }else{
+                filterOrder.sort((a, b) => b.name.localeCompare(a.name))
             }
+            return {
+                ...state,
+                driversFiltered: filterOrder
+            };
     
         default:
             return state

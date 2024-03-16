@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { searchDrivers } from '../../redux/Actions'
+import { orderDrivers, searchDrivers } from '../../redux/Actions'
 import { useState } from 'react'
 
 const SearchBar = ()=>{
     const [ inputValue, setInputValue ] = useState("")
     const drivers = useSelector(state => state.drivers)
     const teams = useSelector(state => state.teams)
+    const driversFiltered = useSelector(state => state.driversFiltered)
     const dispatch = useDispatch()
 
     const handleSearch = ()=>{
@@ -18,20 +19,26 @@ const SearchBar = ()=>{
         setInputValue(event.target.value)
     }
 
+    const handleOrder = (event)=>{
+        dispatch(orderDrivers(event.target.value))
+    }
+    console.log(drivers)
+    console.log(driversFiltered)
+    //arreglar reducer order
     return(
         <div>
             <div>
-                <select name="Order" id="">
+                <select onChange={handleOrder} name="Order">
                     <option value="Random">Random</option>
-                    <option value="Ascendente">Ascendente</option>
-                    <option value="Descendente">Descendente</option>
+                    <option value="A">Ascendente</option>
+                    <option value="D">Descendente</option>
                 </select>
-                <select name="Origen" id="">
+                <select name="Origen">
                     <option value="All">All</option>
                     <option value="API">API</option>
                     <option value="DB">DB</option>
                 </select>
-                <select name="Teams" id="">
+                <select name="Teams">
                   {teams.map(team =>{
                         return(
                             <option key={team.id} value={team.name}>{team.name}</option>

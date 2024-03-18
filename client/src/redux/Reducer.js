@@ -74,8 +74,8 @@ const rootReducer = (state = initialState, action) =>{
                 return teams.some(team => team.trim() === action.payload)
             });
             const driverFoundToDb = state.drivers.db.filter(driver => {
-                const teams = driver.teams || []
-                return teams.filter(team => team === action.payload);
+                const teams = driver.Teams || []
+                return teams.some(team => team.name === action.payload);
             });
             
             return {

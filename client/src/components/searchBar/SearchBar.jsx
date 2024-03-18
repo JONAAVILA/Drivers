@@ -46,6 +46,7 @@ const SearchBar = ()=>{
                     <option value="DB">DB</option>
                 </select>
                 <select onChange={handleTeams} name="Teams">
+                    <option value="All">All</option>
                   {teams.map(team =>{
                         return(
                             <option key={team.id} value={team.name}>{team.name}</option>

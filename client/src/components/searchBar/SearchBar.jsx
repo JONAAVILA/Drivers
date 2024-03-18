@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { orderDrivers, searchDrivers } from '../../redux/Actions'
+import { orderDrivers, originDrivers, searchDrivers } from '../../redux/Actions'
 import { useState } from 'react'
 
 const SearchBar = ()=>{
@@ -22,9 +22,11 @@ const SearchBar = ()=>{
     const handleOrder = (event)=>{
         dispatch(orderDrivers(event.target.value))
     }
-    console.log(drivers)
-    console.log(driversFiltered)
-    //arreglar reducer order
+
+    const handleOrigin = (event)=>{
+        dispatch(originDrivers(event.target.value))
+    }
+    
     return(
         <div>
             <div>
@@ -33,7 +35,7 @@ const SearchBar = ()=>{
                     <option value="A">Ascendente</option>
                     <option value="D">Descendente</option>
                 </select>
-                <select name="Origen">
+                <select onChange={handleOrigin} name="Origen">
                     <option value="All">All</option>
                     <option value="API">API</option>
                     <option value="DB">DB</option>

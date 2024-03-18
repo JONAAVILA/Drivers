@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALL_DRIVERS, ALL_TEAMS, ORDER, SEARCH } from './ActionsTypes';
+import { ALL_DRIVERS, ALL_TEAMS, ORDER, ORIGIN, SEARCH } from './ActionsTypes';
 
 export const allDrivers = ()=>{
     const URL = 'http://localhost:3001/drivers'
@@ -39,6 +39,15 @@ export const orderDrivers = (order)=>{
         return dispatch({
             type: ORDER,
             payload: order
+        })
+    }
+}
+
+export const originDrivers = (origin)=>{
+    return async (dispatch)=>{
+        return dispatch({
+            type: ORIGIN,
+            payload: origin
         })
     }
 }

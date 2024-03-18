@@ -1,4 +1,4 @@
-import { ALL_DRIVERS, ALL_TEAMS, ORDER, SEARCH } from './ActionsTypes';
+import { ALL_DRIVERS, ALL_TEAMS, ORDER, ORIGIN, SEARCH } from './ActionsTypes';
 
 const initialState = {
     drivers: [],
@@ -51,7 +51,23 @@ const rootReducer = (state = initialState, action) =>{
                     driversFiltered: filterOrder
                 }; 
             }
-            
+        case ORIGIN:
+            if(action.payload === "API"){
+                return{
+                    ...state,
+                    driversFiltered: state.drivers.api
+                }
+            }else if(action.payload === "DB"){
+                return{
+                    ...state,
+                    driversFiltered: state.drivers.db
+                }
+            }else{
+                return{
+                    ...state,
+                    driversFiltered: state.drivers
+                }
+            }
     
         default:
             return state

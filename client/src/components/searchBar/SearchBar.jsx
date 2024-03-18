@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { allTeams, orderDrivers, originDrivers, searchDrivers, teamDrivers } from '../../redux/Actions'
-import { useEffect, useState } from 'react'
+import { orderDrivers, originDrivers, searchDrivers, teamDrivers } from '../../redux/Actions'
+import { useState } from 'react'
 
 const SearchBar = ()=>{
     const [ inputValue, setInputValue ] = useState("")
@@ -29,9 +29,7 @@ const SearchBar = ()=>{
     const handleTeams = (event)=>{
         dispatch(teamDrivers(event.target.value))
     }
-    const driversFiltered = useSelector(state => state.driversFiltered) // despues eliminar
-    console.log(drivers)
-    console.log(driversFiltered)
+    
     return(
         <div>
             <div>

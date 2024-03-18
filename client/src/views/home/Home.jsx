@@ -1,3 +1,4 @@
+import Pagination from "../../components/pagination/Pagination";
 import SearchBar from "../../components/searchBar/SearchBar";
 
 const Home = ()=>{
@@ -8,6 +9,7 @@ const Home = ()=>{
             </div>
             <div>
                 <SearchBar/>
+                <Pagination/>
             </div>
         </div>
     )

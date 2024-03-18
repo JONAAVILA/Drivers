@@ -69,8 +69,19 @@ const rootReducer = (state = initialState, action) =>{
                 }
             }
         case TEAM:
-            const teamMatch = state.drivers
-    
+            const driverFoundToApi = state.drivers.api.filter(driver => {
+                const teams = driver.teams?.split(/,\s*(?![^()]*\))/) || []
+                return teams.some(team => team.trim() === action.payload)
+            });
+            const driverFoundToDb = state.drivers.db.filter(driver => {
+                const teams = driver.teams || []
+                return teams.filter(team => team === action.payload);
+            });
+            
+            return {
+                ...state,
+                driversFiltered: [driverFoundToApi,driverFoundToDb]
+            };
         default:
             return state
     }

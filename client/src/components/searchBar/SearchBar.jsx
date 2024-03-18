@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { orderDrivers, originDrivers, searchDrivers } from '../../redux/Actions'
+import { orderDrivers, originDrivers, searchDrivers, teamDrivers } from '../../redux/Actions'
 import { useState } from 'react'
 
 const SearchBar = ()=>{
@@ -26,6 +26,11 @@ const SearchBar = ()=>{
     const handleOrigin = (event)=>{
         dispatch(originDrivers(event.target.value))
     }
+
+    
+    const handleTeams = (event)=>{
+        dispatch(teamDrivers(event.target.value))
+    }
     
     return(
         <div>
@@ -40,7 +45,7 @@ const SearchBar = ()=>{
                     <option value="API">API</option>
                     <option value="DB">DB</option>
                 </select>
-                <select name="Teams">
+                <select onChange={handleTeams} name="Teams">
                   {teams.map(team =>{
                         return(
                             <option key={team.id} value={team.name}>{team.name}</option>

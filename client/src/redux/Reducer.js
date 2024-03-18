@@ -1,4 +1,4 @@
-import { ALL_DRIVERS, ALL_TEAMS, ORDER, ORIGIN, SEARCH } from './ActionsTypes';
+import { ALL_DRIVERS, ALL_TEAMS, ORDER, ORIGIN, SEARCH, TEAM } from './ActionsTypes';
 
 const initialState = {
     drivers: [],
@@ -68,6 +68,8 @@ const rootReducer = (state = initialState, action) =>{
                     driversFiltered: state.drivers
                 }
             }
+        case TEAM:
+            const teamMatch = state.drivers
     
         default:
             return state

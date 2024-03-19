@@ -29,7 +29,7 @@ const SearchBar = ()=>{
     const handleTeams = (event)=>{
         dispatch(teamDrivers(event.target.value))
     }
-    
+
     return(
         <div>
             <div>

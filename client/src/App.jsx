@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { allDrivers, allTeams } from './redux/Actions';
+import { allDrivers, allTeams, originDrivers } from './redux/Actions';
 import Landing from './views/landing/Landing';
 import Home from './views/home/Home';
 import Detail from './views/detail/Detail';
@@ -24,7 +24,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Landing/>} />
         <Route path='/home' element={<Home/>} />
-        <Route path='/detail' element={<Detail/>} />
+        <Route path='/detail/db/:id' element={<Detail/>} />
+        <Route path='/detail/api/:id' element={<Detail/>} />
         <Route path='/form' element={<Form/>} />
       </Routes>
     </>

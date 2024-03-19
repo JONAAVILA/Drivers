@@ -9,9 +9,15 @@ const SearchBar = ()=>{
     const dispatch = useDispatch()
     
     const handleSearch = ()=>{
-        const value = inputValue[0].toUpperCase() + inputValue.toLowerCase().slice(1)
-        const driver = drivers.api.find(d => d.name.forename === value) 
-        dispatch(searchDrivers(driver))
+        if(inputValue){
+            const value = inputValue[0].toUpperCase() + inputValue.toLowerCase().slice(1)
+            const driver = drivers.api.find(d => d.name.forename === value)
+            if(driver){
+                dispatch(searchDrivers(driver))
+            }else{
+                window.alert(`Driver "${inputValue}" not found `)
+            }
+        }
     }
     
     const handleInputSearch = (event)=>{

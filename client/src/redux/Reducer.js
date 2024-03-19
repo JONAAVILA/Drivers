@@ -62,12 +62,12 @@ const rootReducer = (state = initialState, action) =>{
                     ...state,
                     driversFiltered: state.drivers.db
                 }
-            }else{
-                return{
-                    ...state,
-                    driversFiltered: state.drivers
-                }
             }
+            return{
+                ...state,
+                driversFiltered: state.drivers
+            }
+            
         case TEAM:
             if(action.payload === "All"){
                 return{

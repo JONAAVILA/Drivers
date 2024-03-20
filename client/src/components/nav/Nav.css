@@ -4,10 +4,8 @@
     align-items: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    border: solid 3px #eaecf0;
-    border-radius: 1.2rem;
+    border-bottom:solid 2px #242422;
     padding: 4px;
-    background-color: #ffffff;
 }
 
 .box_nav button{
@@ -15,7 +13,7 @@
 }
 
 .box_nav h1{
-    color: #929292;
+    color: #242422;
     margin: 0;
     font-size: 1.8rem;
     padding-left: 15px;

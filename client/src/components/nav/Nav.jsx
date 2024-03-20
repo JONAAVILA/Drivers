@@ -5,7 +5,7 @@ const Nav = ()=>{
     return(
         <div className='box_nav' >
             <div>
-                <h1>Drivers around the word</h1>
+                <h1>DRIVERS AROUND THE WORD</h1>
             </div>
             <div>
              <Link to='/home' >

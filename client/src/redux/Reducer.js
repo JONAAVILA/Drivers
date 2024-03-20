@@ -65,7 +65,7 @@ const rootReducer = (state = initialState, action) =>{
             }
             return{
                 ...state,
-                driversFiltered: state.drivers
+                driversFiltered: state.drivers.api.concat(state.drivers.db)
             }
             
         case TEAM:

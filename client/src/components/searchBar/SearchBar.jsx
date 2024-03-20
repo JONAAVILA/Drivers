@@ -7,6 +7,7 @@ const SearchBar = ()=>{
     const [ inputValue, setInputValue ] = useState("")
     const drivers = useSelector(state => state.drivers)
     const teams = useSelector(state => state.teams)
+    const driversFiltered = useSelector(state => state.driversFiltered)
     const dispatch = useDispatch()
     
     const handleSearch = ()=>{
@@ -36,7 +37,7 @@ const SearchBar = ()=>{
     const handleTeams = (event)=>{
         dispatch(teamDrivers(event.target.value))
     }
-
+    console.log(driversFiltered)
     return(
         <div className='box_searchbar' >
             <div>

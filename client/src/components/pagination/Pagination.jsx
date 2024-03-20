@@ -15,10 +15,11 @@ const Pagination = ()=>{
     return( 
         <div className="conteiner_page" >
             <div className="box_page" >
-               {drivers.api?.map(driver => {
+               {drivers?.map(driver => {
                     return(
                         <Link to={`/detail/api/${driver.id}`} >
                             <div className="box_card" key={driver.id}>
+                                //arreglar cuando no hay una url
                                 <div className="image_back_profile" style={{backgroundImage:`url(${driver.image.url})`,
                                                                             backgroundSize: 'cover',
                                                                             backgroundRepeat: 'no-repeat',
@@ -30,9 +31,7 @@ const Pagination = ()=>{
                                                                                                  viewBox="0 0 24 24"  
                                                                                                  fill="none"  
                                                                                                  stroke="currentColor"  
-                                                                                                 stroke-width="2"  
-                                                                                                 stroke-linecap="round"  
-                                                                                                 stroke-linejoin="round"  
+                                                                                                 stroke-width="2"    
                                                                                                  >
                                                                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                                                                 <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />

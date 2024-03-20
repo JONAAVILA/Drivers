@@ -12,6 +12,7 @@ const Pagination = ()=>{
     },[])
     const drivers = useSelector(state => state.driversFiltered)
     
+    //arreglar cuando no hay una url
     return( 
         <div className="conteiner_page" >
             <div className="box_page" >
@@ -19,7 +20,6 @@ const Pagination = ()=>{
                     return(
                         <Link to={`/detail/api/${driver.id}`} >
                             <div className="box_card" key={driver.id}>
-                                //arreglar cuando no hay una url
                                 <div className="image_back_profile" style={{backgroundImage:`url(${driver.image.url})`,
                                                                             backgroundSize: 'cover',
                                                                             backgroundRepeat: 'no-repeat',

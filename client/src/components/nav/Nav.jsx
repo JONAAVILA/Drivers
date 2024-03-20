@@ -1,14 +1,21 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import './Nav.css';
 
 const Nav = ()=>{
     return(
-        <div>
-            <Link to='/home' >
+        <div className='box_nav' >
+            <div>
+                <h1>Drivers around the word</h1>
+            </div>
+            <div>
+             <Link to='/home' >
                 <button>Home</button>
             </Link>
             <Link to='/form' >
                 <button>Create</button>
-            </Link>
+            </Link>   
+            </div>
+            
         </div>
     )
 }

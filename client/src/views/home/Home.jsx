@@ -5,13 +5,8 @@ const Home = ()=>{
    
     return(
         <div>
-            <div>
-                <h1>home</h1>
-            </div>
-            <div>
-                <SearchBar/>
-                <Pagination/>
-            </div>
+            <SearchBar/>
+            <Pagination/>
         </div>
     )
 }

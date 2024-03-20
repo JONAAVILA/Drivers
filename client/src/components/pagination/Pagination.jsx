@@ -6,11 +6,11 @@ import { originDrivers } from "../../redux/Actions";
 
 
 const Pagination = ()=>{
+    const drivers = useSelector(state => state.driversFiltered)
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(originDrivers("All"))
     },[])
-    const drivers = useSelector(state => state.driversFiltered)
     
     //arreglar cuando no hay una url
     return( 

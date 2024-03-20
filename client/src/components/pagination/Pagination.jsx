@@ -13,7 +13,7 @@ const Pagination = ()=>{
     const drivers = useSelector(state => state.driversFiltered)
     
     return( 
-        <div>
+        <div className="conteiner_page" >
             <div className="box_page" >
                {drivers.api?.map(driver => {
                     return(

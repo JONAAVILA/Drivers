@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { orderDrivers, originDrivers, searchDrivers, teamDrivers } from '../../redux/Actions'
 import { useState } from 'react'
+import './SearchBar.css';
 
 const SearchBar = ()=>{
     const [ inputValue, setInputValue ] = useState("")
@@ -37,29 +38,29 @@ const SearchBar = ()=>{
     }
 
     return(
-        <div>
+        <div className='box_searchbar' >
             <div>
-                <select onChange={handleOrder} name="Order">
-                    <option value="Random">Random</option>
-                    <option value="A">Ascendente</option>
-                    <option value="D">Descendente</option>
-                </select>
-                <select onChange={handleOrigin} name="Origen">
-                    <option value="All">All</option>
-                    <option value="API">API</option>
-                    <option value="DB">DB</option>
-                </select>
-                <select onChange={handleTeams} name="Teams">
-                    <option value="All">All</option>
-                  {teams.map(team =>{
-                        return(
-                            <option key={team.id} value={team.name}>{team.name}</option>
-                        )
-                  })} 
-                </select>
                 <input value={inputValue} onChange={handleInputSearch} type="text" /> 
                 <button onClick={handleSearch} >search</button>
             </div>
+            <select onChange={handleOrder} name="Order">
+                <option value="Random">Random</option>
+                <option value="A">Ascendente</option>
+                <option value="D">Descendente</option>
+            </select>
+            <select onChange={handleOrigin} name="Origen">
+                <option value="All">All</option>
+                <option value="API">API</option>
+                <option value="DB">DB</option>
+            </select>
+            <select onChange={handleTeams} name="Teams">
+                <option value="All">All</option>
+              {teams.map(team =>{
+                    return(
+                        <option key={team.id} value={team.name}>{team.name}</option>
+                    )
+              })} 
+            </select>
         </div>
     )
 }   

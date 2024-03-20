@@ -1,18 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import './Pagination.css';  
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { originDrivers } from "../../redux/Actions";
 
-
 const Pagination = ()=>{
-    const drivers = useSelector(state => state.driversFiltered)
+    const [ currentPage, setCurrentPage ] = useState(1) 
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(originDrivers("All"))
     },[dispatch])
-    console.log(drivers)
-    //arreglar cuando no hay una url
+    const drivers = useSelector(state => state.driversFiltered)
+    
     return( 
         <div className="conteiner_page" >
             <div className="box_page" >
@@ -49,10 +48,10 @@ const Pagination = ()=>{
                     )
                })} 
             </div>
-            <div>
-                <button>prev</button>
+            <div className="box_button_handlers" >
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="40"  height="40"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
                 <p>1</p>
-                <button>next</button>
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="40"  height="40"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
             </div>
         </div>
     )

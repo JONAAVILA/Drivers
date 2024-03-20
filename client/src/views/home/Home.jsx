@@ -3,7 +3,7 @@ import SearchBar from "../../components/searchBar/SearchBar";
 import './Home.css';
 
 const Home = ()=>{
-   
+
     return(
         <div className="box_home" >
             <SearchBar/>

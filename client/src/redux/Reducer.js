@@ -24,8 +24,7 @@ const rootReducer = (state = initialState, action) =>{
                 driversFiltered: action.payload
             }
         case ORDER:
-            if(!state.drivers.db){
-                   const filterOrder = [...state.drivers.api]
+                   const filterOrder = [...state.driversFiltered]
                 if (action.payload === "A") {
                     filterOrder.sort((a, b) => a.name.forename.localeCompare(b.name.forename))
                 }else if(action.payload === "Random"){
@@ -37,28 +36,6 @@ const rootReducer = (state = initialState, action) =>{
                     ...state,
                     driversFiltered: filterOrder
                 }; 
-            }else{
-                const filterOrderAll = [...state.driversFiltered]
-                const filterOrderApi = [...state.drivers.api]
-                const filterOrderDb = [...state.drivers.db]
-                if (action.payload === "A") {
-                    filterOrderApi.sort((a, b) => a.name.forename.localeCompare(b.name.forename))
-                    filterOrderDb.sort((a, b) => a.name.localeCompare(b.name))
-                }else if(action.payload === "Random"){
-                    filterOrderAll.sort(() => Math.random() - 0.5)
-                    return{
-                        ...state,
-                        driversFiltered:filterOrderAll
-                    }
-                }else{
-                    filterOrderApi.sort((a, b) => b.name.forename.localeCompare(a.name.forename))
-                    filterOrderDb.sort((a, b) => b.name.localeCompare(a.name))
-                }
-                return {
-                    ...state,
-                    driversFiltered: filterOrderDb.concat(filterOrderApi)
-                }; 
-            }
         case ORIGIN:
             if(action.payload === "API"){
                 return{

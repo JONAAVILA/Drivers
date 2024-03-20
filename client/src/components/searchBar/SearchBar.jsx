@@ -7,14 +7,13 @@ const SearchBar = ()=>{
     const [ inputValue, setInputValue ] = useState("")
     const drivers = useSelector(state => state.drivers)
     const teams = useSelector(state => state.teams)
-    const driversFiltered = useSelector(state => state.driversFiltered)
     const dispatch = useDispatch()
     
     const handleSearch = ()=>{
         if(inputValue){
             const value = inputValue[0].toUpperCase() + inputValue.toLowerCase().slice(1)
             const driver = drivers.api.filter(d => d.name.forename === value)
-            if(driver){
+            if(driver.length > 0){
                 dispatch(searchDrivers(driver))
             }else{
                 window.alert(`Driver "${inputValue}" not found `)

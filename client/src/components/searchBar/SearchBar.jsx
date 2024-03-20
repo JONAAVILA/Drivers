@@ -13,7 +13,7 @@ const SearchBar = ()=>{
     const handleSearch = ()=>{
         if(inputValue){
             const value = inputValue[0].toUpperCase() + inputValue.toLowerCase().slice(1)
-            const driver = drivers.api.find(d => d.name.forename === value)
+            const driver = drivers.api.filter(d => d.name.forename === value)
             if(driver){
                 dispatch(searchDrivers(driver))
             }else{
@@ -37,7 +37,7 @@ const SearchBar = ()=>{
     const handleTeams = (event)=>{
         dispatch(teamDrivers(event.target.value))
     }
-    console.log(driversFiltered)
+    
     return(
         <div className='box_searchbar' >
             <div>
@@ -45,17 +45,17 @@ const SearchBar = ()=>{
                 <button onClick={handleSearch} >search</button>
             </div>
             <select onChange={handleOrder} name="Order">
-                <option value="Random">Random</option>
+                <option value="Random">Random Order</option>
                 <option value="A">Ascendente</option>
                 <option value="D">Descendente</option>
             </select>
             <select onChange={handleOrigin} name="Origen">
-                <option value="All">All</option>
+                <option value="All">API and DB</option>
                 <option value="API">API</option>
                 <option value="DB">DB</option>
             </select>
             <select onChange={handleTeams} name="Teams">
-                <option value="All">All</option>
+                <option value="All">All Teams</option>
               {teams.map(team =>{
                     return(
                         <option key={team.id} value={team.name}>{team.name}</option>

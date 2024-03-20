@@ -38,7 +38,7 @@ const rootReducer = (state = initialState, action) =>{
                     driversFiltered: filterOrder
                 }; 
             }else{
-                const filterOrderAll = [...state.drivers.api,...state.drivers.db]
+                const filterOrderAll = [...state.driversFiltered]
                 const filterOrderApi = [...state.drivers.api]
                 const filterOrderDb = [...state.drivers.db]
                 if (action.payload === "A") {

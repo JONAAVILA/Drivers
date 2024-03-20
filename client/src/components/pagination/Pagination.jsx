@@ -5,13 +5,23 @@ import { useEffect, useState } from "react";
 import { originDrivers } from "../../redux/Actions";
 
 const Pagination = ()=>{
-    const [ currentPage, setCurrentPage ] = useState(1) 
+    const [ currentPage, setCurrentPage ] = useState(1)
+    const itemsPerPage = 12
+    const startIndex = (currentPage -1) * itemsPerPage
+    const endIndex = startIndex + itemsPerPage
+
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(originDrivers("All"))
     },[dispatch])
     const drivers = useSelector(state => state.driversFiltered)
     
+    const handlePrev = (event)=>{
+        if(event && currentPage > 1){
+            setCurrentPage(currentPage - 1)
+        }
+    }
+
     return( 
         <div className="conteiner_page" >
             <div className="box_page" >
@@ -49,8 +59,8 @@ const Pagination = ()=>{
                })} 
             </div>
             <div className="box_button_handlers" >
-                <svg  xmlns="http://www.w3.org/2000/svg"  width="40"  height="40"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
-                <p>1</p>
+                <svg onClick={handlePrev} xmlns="http://www.w3.org/2000/svg"  width="40"  height="40"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
+                <p>{currentPage}</p>
                 <svg  xmlns="http://www.w3.org/2000/svg"  width="40"  height="40"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
             </div>
         </div>

@@ -38,17 +38,25 @@ const rootReducer = (state = initialState, action) =>{
                     driversFiltered: filterOrder
                 }; 
             }else{
-                const filterOrder = [...state.drivers.api,...state.drivers.db]
+                const filterOrderAll = [...state.drivers.api,...state.drivers.db]
+                const filterOrderApi = [...state.drivers.api]
+                const filterOrderDb = [...state.drivers.db]
                 if (action.payload === "A") {
-                    filterOrder.sort((a, b) => a.name.forename.localeCompare(b.name.forename))
+                    filterOrderApi.sort((a, b) => a.name.forename.localeCompare(b.name.forename))
+                    filterOrderDb.sort((a, b) => a.name.localeCompare(b.name))
                 }else if(action.payload === "Random"){
-                    filterOrder.sort(() => Math.random() - 0.5)
+                    filterOrderAll.sort(() => Math.random() - 0.5)
+                    return{
+                        ...state,
+                        driversFiltered:filterOrderAll
+                    }
                 }else{
-                    filterOrder.sort((a, b) => b.name.forename.localeCompare(a.name.forename))
+                    filterOrderApi.sort((a, b) => b.name.forename.localeCompare(a.name.forename))
+                    filterOrderDb.sort((a, b) => b.name.localeCompare(a.name))
                 }
                 return {
                     ...state,
-                    driversFiltered: filterOrder
+                    driversFiltered: filterOrderDb.concat(filterOrderApi)
                 }; 
             }
         case ORIGIN:
@@ -65,7 +73,7 @@ const rootReducer = (state = initialState, action) =>{
             }
             return{
                 ...state,
-                driversFiltered: state.drivers.api.concat(state.drivers.db)
+                driversFiltered: state.drivers.db.concat(state.drivers.api)
             }
             
         case TEAM:

@@ -11,8 +11,8 @@ const allDrivers = async ()=>{
         if(driversToDb.length === 0) console.log('Drivers to DB not found')
 
         return {
-            api: drivers.data,
-            db: driversToDb
+            db: driversToDb,
+            api: drivers.data
         }
     } catch (error) {
         return {error:error.message}

@@ -9,12 +9,12 @@ const Pagination = ()=>{
     const itemsPerPage = 12
     const startIndex = (currentPage -1) * itemsPerPage
     const endIndex = startIndex + itemsPerPage
+    const drivers = useSelector(state => state.driversFiltered)
 
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(originDrivers("All"))
     },[dispatch])
-    const drivers = useSelector(state => state.driversFiltered)
     
     const handlePrev = (event)=>{
         if(event && currentPage > 1){
@@ -22,8 +22,10 @@ const Pagination = ()=>{
         }
     }
 
-    const handleNext  = (event)=>{
-        if(event && currentPage < 43) setCurrentPage(currentPage + 1)
+    const handleNext  = ()=>{
+        if(currentPage < 43 && drivers.length/itemsPerPage > 1 && currentPage < Math.ceil(drivers.length/itemsPerPage)){
+            setCurrentPage(currentPage + 1)
+        }
     }
 
     return( 
@@ -43,8 +45,7 @@ const Pagination = ()=>{
                                                                                                  height="100"
                                                                                                  viewBox="0 0 24 24"  
                                                                                                  fill="none"  
-                                                                                                 stroke="currentColor" 
-                                                                                                 >
+                                                                                                 stroke="currentColor">
                                                                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                                                                 <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
                                                                                                 <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
@@ -64,11 +65,35 @@ const Pagination = ()=>{
             </div>
             <div className="box_button_handlers" >
                 <div onClick={handlePrev} >
-                    <svg xmlns="http://www.w3.org/2000/svg"  width="25"  height="25"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg"  
+                         width="25"  
+                         height="25"  
+                         viewBox="0 0 24 24"  
+                         fill="none"  
+                         stroke="currentColor"  
+                         stroke-width="2"  
+                         stroke-linecap="round"  
+                         stroke-linejoin="round"  
+                         class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M15 6l-6 6l6 6" />
+                    </svg>
                 </div>
                 <p>{currentPage}</p>
                 <div onClick={handleNext} >
-                    <svg xmlns="http://www.w3.org/2000/svg"  width="25"  height="25"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="25"
+                         height="25"
+                         viewBox="0 0 24 24"  
+                         fill="none"  
+                         stroke="currentColor"  
+                         stroke-width="2"  
+                         stroke-linecap="round"  
+                         stroke-linejoin="round"  
+                         class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M9 6l6 6l-6 6" />
+                    </svg>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ const SearchBar = ()=>{
             if(driver.length > 0){
                 dispatch(searchDrivers(driver))
                 setInputValue("")
-            }else{
+            }else{  
                 window.alert(`Driver "${inputValue}" not found `)
                 setInputValue("")
             }

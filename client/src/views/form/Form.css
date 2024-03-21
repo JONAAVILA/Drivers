@@ -2,3 +2,16 @@
     display: flex;
     justify-content: center;
 }
+
+.box_teams_map{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
+
+.box_teams_map p{
+    font-size: .6rem;
+    margin: 2px;
+    border: solid 1px;
+    border-radius: 1rem;
+    padding: 1px 5px;
+}

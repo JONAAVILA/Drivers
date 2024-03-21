@@ -18,10 +18,15 @@ const Form = ()=>{
 
     const handleTeams = (event)=>{
         const value = event.target.value
-        setProfile(prevProfile =>({
-            ...prevProfile,
-            team: [...prevProfile.team, value]
-        }))
+        const valueFound = profile.team.find(team => team === value)
+        if(valueFound){
+            window.alert(`${value} is already found`)
+        }else{
+            setProfile(prevProfile =>({
+                ...prevProfile,
+                team: [...prevProfile.team, value]
+            }))
+        }
     }   
     console.log(profile)
     
@@ -39,12 +44,20 @@ const Form = ()=>{
                     <input placeholder="Description" type="text"/>
                     <div>
                         <select onChange={handleTeams} id="teams">
+                            <option value="">Select team</option>
                             {teams.map(team =>{
                             return(
                                 <option key={team.id} value={team.name}>{team.name}</option>
                                 )
                             })}
                         </select>    
+                    </div>
+                    <div className='box_teams_map' >
+                        {profile.team.map(team =>{
+                            return(
+                                <p>{team}</p>
+                            )
+                        })}
                     </div>
                 </div>
                 <div>

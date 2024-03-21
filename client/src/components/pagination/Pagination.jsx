@@ -23,7 +23,7 @@ const Pagination = ()=>{
     }
 
     const handleNext  = (event)=>{
-        if(event) setCurrentPage(currentPage + 1)
+        if(event && currentPage < 43) setCurrentPage(currentPage + 1)
     }
 
     return( 

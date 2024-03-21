@@ -15,8 +15,10 @@ const SearchBar = ()=>{
             const driver = drivers.api.filter(d => d.name.forename === value)
             if(driver.length > 0){
                 dispatch(searchDrivers(driver))
+                setInputValue("")
             }else{
                 window.alert(`Driver "${inputValue}" not found `)
+                setInputValue("")
             }
         }
     }
@@ -40,7 +42,7 @@ const SearchBar = ()=>{
     return(
         <div className='box_searchbar' >
             <div>
-                <input value={inputValue} onChange={handleInputSearch} type="text" /> 
+                <input placeholder='Enter a name' value={inputValue} onChange={handleInputSearch} type="text" /> 
                 <button onClick={handleSearch} >search</button>
             </div>
             <select onChange={handleOrder} name="Order">

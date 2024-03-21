@@ -1,6 +1,7 @@
 .box_searchbar{
     border-right: solid 2px;
     width: 17vw;
+    min-height: 70vh;
     padding: 1.2rem 5px 5px 5px;
     margin-top: 1rem;
     display: flex;

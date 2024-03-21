@@ -20,9 +20,11 @@ a {
   font-weight: 500;
   color: #242422;
   text-decoration: inherit;
+  transition: all ease 400ms;
 }
 a:hover {
-  color: rgb(146, 146, 146);
+  transform: translateX(3px);
+  color: rgb(105, 105, 105);
 }
 
 body {
@@ -42,8 +44,8 @@ input{
   width: 50%;
   border: solid 2px #ffffff;
   border-radius: 9px;
-  padding: 5px;
-  font-size: 1em;
+  padding: 6px;
+  font-size: .8em;
   color: #f2f4f7;
   background-color: #242422;
   cursor: pointer;
@@ -53,7 +55,7 @@ select{
   border: solid 2px #ffffff;
   border-radius: 9px;
   padding: 0.4em .5em;
-  font-size: 1em;
+  font-size: .8em;
   color: #f2f4f7;
   background-color: #242422;
   cursor: pointer;

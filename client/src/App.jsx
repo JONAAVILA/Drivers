@@ -5,7 +5,7 @@ import { allDrivers, allTeams } from './redux/Actions';
 import Landing from './views/landing/Landing';
 import Home from './views/home/Home';
 import Detail from './views/detail/Detail';
-import Form from './views/form/Forma';
+import Form from './views/form/Form';
 import Nav from './components/nav/Nav';
 import './App.css'
 

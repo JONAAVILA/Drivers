@@ -1,17 +1,36 @@
 .conteiner_form{
     display: flex;
     justify-content: center;
+    width: 96vw;
+}
+
+.box_inputs{
+    width: 50%;
+}
+
+.box_preview{
+    width: 50%;
+    padding: 1rem;
 }
 
 .box_teams_map{
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
+    margin-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: grid;  
+    grid-template-columns: repeat(4,1fr);
 }
 
 .box_teams_map p{
+    background-color: #eaecf0;
+    width: 125px;
     font-size: .6rem;
     margin: 2px;
     border: solid 1px;
     border-radius: 1rem;
-    padding: 1px 5px;
+    padding: 1px 3px;
+}
+
+.input_description{
+    height: 50px;
 }

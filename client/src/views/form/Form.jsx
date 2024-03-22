@@ -32,22 +32,31 @@ const Form = ()=>{
         }
     } 
     
-    const handleInfoDriver = (event)=>{
-
+    const handleDriver = (event)=>{
+        const { id, value } = event.target
+        if(id === 'name'){
+            setProfile(prevProfile =>({
+                ...prevProfile,
+                name:{forename: value}
+            }))
+        }else{
+            setProfile(prevProfile =>({
+                ...prevProfile,
+                [id]: value
+            }))
+        }
     }
-    
-
+    console.log(profile)
     return(
         <div className="conteiner_form" >
-            <div>
-                <div>
+            <div className='box_inputs' >
                     <h2>Driver details</h2>
-                    <input placeholder="Name" id='name' type="text"/>
-                    <input placeholder="Lastname" id='lastname' type="text"/>
-                    <input placeholder="Nationality" id='nationality' type="text"/>
-                    <input placeholder='Url image' id='image' type="url"/>
-                    <input type="date" id='release' />
-                    <input placeholder="Description" id='description' type="text"/>
+                    <input placeholder="Name" onChange={handleDriver} id='name' type="text"/>
+                    <input placeholder="Lastname" onChange={handleDriver} id='lastname' type="text"/>
+                    <input placeholder="Nationality" onChange={handleDriver} id='nationality' type="text"/>
+                    <input placeholder='Url image' onChange={handleDriver} id='image' type="url"/>
+                    <input type="date" onChange={handleDriver} id='release' />
+                    <input className='input_description' onChange={handleDriver} placeholder="Description" id='description' type="text"/>
                     <div>
                         <select value={selectTeam} onChange={(e) => setSelectedTeam(e.target.value)} id="team">
                             <option value="">Select Team</option>
@@ -59,6 +68,9 @@ const Form = ()=>{
                         </select> 
                         <button onClick={handleTeams}>Select</button>  
                     </div>
+                    <div>
+                        <button>Create</button>
+                    </div>
                     <div className='box_teams_map' >
                         {profile.team.map(team =>{
                             return(
@@ -66,16 +78,12 @@ const Form = ()=>{
                             )
                         })}
                     </div>
-                </div>
-                <div>
-                    <button>Create</button>
-                </div>
             </div>
-            <div>
+            <div className='box_preview' >
                 <h2>Preview</h2>
                 <div>
                 <div className="box_card">
-                                <div className="image_back_profile" style={{backgroundImage:`url()`,
+                                <div style={{backgroundImage:`url()`,
                                                                             backgroundSize: 'cover',
                                                                             backgroundRepeat: 'no-repeat',
                                                                             backgroundPosition: 'center', 

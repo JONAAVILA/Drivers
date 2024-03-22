@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Form.css';
 import { useSelector } from 'react-redux';
+import validate from './validate';
 
 const Form = ()=>{
     const teams = useSelector(state => state.teams)
@@ -15,20 +16,25 @@ const Form = ()=>{
         description: '',
         team: []
     })
+    const [ selectTeam, setSelectedTeam ] = useState("")
 
-    const handleTeams = (event)=>{
-        const value = event.target.value
-        const valueFound = profile.team.find(team => team === value)
-        if(valueFound){
-            window.alert(`${value} is already found`)
+    const handleTeams = ()=>{
+        const valueFound = profile.team.find(team => team === selectTeam)
+        if(valueFound ){
+            window.alert(`${selectTeam} is already found`)
+        }else if(selectTeam.length === 0){
+            window.alert('Selected a team')
         }else{
             setProfile(prevProfile =>({
                 ...prevProfile,
-                team: [...prevProfile.team, value]
+                team: [...prevProfile.team, selectTeam]
             }))
         }
-    }   
-    console.log(profile)
+    } 
+    
+    const handleInfoDriver = (event)=>{
+
+    }
     
 
     return(
@@ -36,21 +42,22 @@ const Form = ()=>{
             <div>
                 <div>
                     <h2>Driver details</h2>
-                    <input placeholder="Name" value={profile.name.forename} id='name' type="text"/>
-                    <input placeholder="Lastname" value={profile.lastname} type="text"/>
-                    <input placeholder="Nationality" type="text"/>
-                    <input placeholder='Url image' type="url"/>
-                    <input type="date" />
-                    <input placeholder="Description" type="text"/>
+                    <input placeholder="Name" id='name' type="text"/>
+                    <input placeholder="Lastname" id='lastname' type="text"/>
+                    <input placeholder="Nationality" id='nationality' type="text"/>
+                    <input placeholder='Url image' id='image' type="url"/>
+                    <input type="date" id='release' />
+                    <input placeholder="Description" id='description' type="text"/>
                     <div>
-                        <select onChange={handleTeams} id="teams">
-                            <option value="">Select team</option>
+                        <select value={selectTeam} onChange={(e) => setSelectedTeam(e.target.value)} id="team">
+                            <option value="">Select Team</option>
                             {teams.map(team =>{
                             return(
                                 <option key={team.id} value={team.name}>{team.name}</option>
                                 )
                             })}
-                        </select>    
+                        </select> 
+                        <button onClick={handleTeams}>Select</button>  
                     </div>
                     <div className='box_teams_map' >
                         {profile.team.map(team =>{

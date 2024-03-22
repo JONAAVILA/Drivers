@@ -34,6 +34,7 @@ const Form = ()=>{
     
     const handleDriver = (event)=>{
         const { id, value } = event.target
+        const validateError = validate({...profile})
         if(id === 'name'){
             setProfile(prevProfile =>({
                 ...prevProfile,
@@ -46,7 +47,7 @@ const Form = ()=>{
             }))
         }
     }
-    console.log(profile)
+    
     return(
         <div className="conteiner_form" >
             <div className='box_inputs' >
@@ -84,10 +85,10 @@ const Form = ()=>{
                 <div>
                 <div className="box_card">
                                 <div style={{backgroundImage:`url()`,
-                                                                            backgroundSize: 'cover',
-                                                                            backgroundRepeat: 'no-repeat',
-                                                                            backgroundPosition: 'center', 
-                                                                        }} ></div>
+                                             backgroundSize: 'cover',
+                                             backgroundRepeat: 'no-repeat',
+                                             backgroundPosition: 'center', 
+                                         }} ></div>
                                 {profile.image.url?(<img  alt="" />):(<svg  xmlns="http://www.w3.org/2000/svg"
                                                                                                  width="100" 
                                                                                                  height="100"
@@ -104,6 +105,10 @@ const Form = ()=>{
                                                                                                 <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
                                                                                             </svg>)}
                                 <h1>{profile.name.forename}</h1>
+                                <h4>{profile.lastname}</h4>
+                                <h4>{profile.nationality}</h4>
+                                <h4>{profile.release}</h4>
+                                <p>{profile.description}</p>
                                 <div className="box_teams">
                                     <p>{profile.team.toString()}</p>
                                 </div>

@@ -17,6 +17,7 @@ const Form = ()=>{
         team: []
     })
     const [ selectTeam, setSelectedTeam ] = useState("")
+    const [ errors, setErrors ] = useState("")
 
     const handleTeams = ()=>{
         const valueFound = profile.team.find(team => team === selectTeam)
@@ -34,7 +35,8 @@ const Form = ()=>{
     
     const handleDriver = (event)=>{
         const { id, value } = event.target
-        const validateError = validate({...profile})
+        const validateError = validate({[id]:value})
+        if(validateError) setErrors(validateError)
         if(id === 'name'){
             setProfile(prevProfile =>({
                 ...prevProfile,
@@ -48,11 +50,12 @@ const Form = ()=>{
         }
     }
     
-    return(
-        <div className="conteiner_form" >
+    console.log(errors)
+return(
+    <div className="conteiner_form" >
             <div className='box_inputs' >
                     <h2>Driver details</h2>
-                    <input placeholder="Name" onChange={handleDriver} id='name' type="text"/>
+                    <input placeholder="Name" onChange={handleDriver} id='name' type="text"/> {errors? (<p>{errors.name}</p>):(null) }
                     <input placeholder="Lastname" onChange={handleDriver} id='lastname' type="text"/>
                     <input placeholder="Nationality" onChange={handleDriver} id='nationality' type="text"/>
                     <input placeholder='Url image' onChange={handleDriver} id='image' type="url"/>

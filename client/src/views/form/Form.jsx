@@ -13,7 +13,7 @@ const Form = ()=>{
         nationality: '',
         url: '',
         release: '',
-        description: '',
+        text: '',
         team: []
     })
     const [ selectTeam, setSelectedTeam ] = useState("")
@@ -36,7 +36,10 @@ const Form = ()=>{
     
     const handleDriver = (event)=>{
         const { id, value } = event.target
+        const valueNew = value.trim() ? value.split(" ").map(w => w[0].toUpperCase()+w.slice(1)).join(" ") : '';
+
         const validateError = validate({[id]:value})
+        console.log(validateError)
         if(validateError) setErrors(prevErrors => ({
             ...prevErrors,
             [id]: validateError ? validateError[id] : null
@@ -44,12 +47,17 @@ const Form = ()=>{
         if(id === 'name'){
             setProfile(prevProfile =>({
                 ...prevProfile,
-                name:{forename: value}
+                name:{forename: valueNew}
+            }))
+        }else if(id === 'url'){
+            setProfile(prevProfile =>({
+                ...prevProfile,
+                url: value
             }))
         }else{
             setProfile(prevProfile =>({
                 ...prevProfile,
-                [id]: value
+                [id]: valueNew
             }))
         }
     }
@@ -113,7 +121,7 @@ const Form = ()=>{
             </div>
             <div className='box_preview' >
                 <h2>Preview</h2>
-                <div>
+           
                 <div className="box_card_form">
                                 <div className='back_image'
                                      style={{backgroundImage:`url(${profile.url})`,
@@ -137,15 +145,15 @@ const Form = ()=>{
                                    <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
                                 </svg>)}
                                 <h1>{profile.name.forename}</h1>
-                                <h4>{profile.lastname}</h4>
+                                <h2>{profile.lastname}</h2>
                                 <h4>{profile.nationality}</h4>
                                 <h4>{profile.release}</h4>
-                                <p>{profile.description}</p>
-                                <div className="box_teams">
+                                <p>{profile.text}</p>
+                                <div className="box_teams_preview">
                                     <p>{profile.team.toString()}</p>
                                 </div>
-                            </div>
                 </div>
+              
             </div>
         </div>
     )

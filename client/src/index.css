@@ -51,6 +51,16 @@ input{
   cursor: pointer;
 }
 
+textarea{
+  margin-top: 5px;
+  height: 50px;
+  padding: 3px;
+  border-radius: 5px;
+  background-color: #242422;
+  width: 51%;
+  font-family: inherit;
+}
+
 select{
   border: solid 2px #ffffff;
   border-radius: 9px;

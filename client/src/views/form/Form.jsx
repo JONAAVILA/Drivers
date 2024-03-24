@@ -69,8 +69,11 @@ const Form = ()=>{
                     <input placeholder="Name"
                            onChange={handleDriver}
                            id='name'
-                           type="text"/> 
-                           {errors? (<p className='p_errors' >{errors.name}</p>):(null)}
+                           type="text"/>
+                           <div className='p_errors' >
+                                {errors? (<p>{errors.name}</p>):(null)}
+                           </div>
+                           
                     <input placeholder="Lastname"
                            onChange={handleDriver} 
                            id='lastname' 
@@ -149,7 +152,7 @@ const Form = ()=>{
                                 <h4>{profile.nationality}</h4>
                                 <h4>{profile.release}</h4>
                                 <p>{profile.text}</p>
-                                <div className="box_teams_preview">
+                                <div>
                                     <p>{profile.team.toString()}</p>
                                 </div>
                 </div>

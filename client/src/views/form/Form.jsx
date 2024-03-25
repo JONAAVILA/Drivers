@@ -130,37 +130,36 @@ const Form = ()=>{
             </div>
             <div className='box_preview' >
                 <h2>Preview</h2>
-           
                 <div className="box_card_form">
-                                <div className='back_image'
-                                     style={{backgroundImage:`url(${profile.url})`,
-                                             backgroundSize: 'cover',
-                                             backgroundRepeat: 'no-repeat',
-                                             backgroundPosition: 'center', 
-                                            }} ></div>
-                                {profile.url?(<img src={profile.url}  alt="" />):
-                                (<svg  xmlns="http://www.w3.org/2000/svg"
-                                       width="100" 
-                                       height="100"
-                                       viewBox="0 0 24 24"  
-                                       fill="none"  
-                                       stroke="currentColor">
-                                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                                   <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
-                                   <path d="M4 16v2a2 2 0 0 0 2 2h2" />
-                                   <path d="M16 4h2a2 2 0 0 1 2 2v2" />
-                                   <path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
-                                   <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
-                                </svg>)}
-                                <h1>{profile.name.forename}</h1>
-                                <h2>{profile.lastname}</h2>
-                                <h4>{profile.nationality}</h4>
-                                <h4>{profile.release}</h4>
-                                <p>{profile.text}</p>
-                                <div>
-                                    <p>{profile.team.toString()}</p>
-                                </div>
+                    <div className='back_image'
+                         style={{backgroundImage:`url(${profile.url})`,
+                                 backgroundSize: 'cover',
+                                 backgroundRepeat: 'no-repeat',
+                                 backgroundPosition: 'center', 
+                                }} ></div>
+                    {profile.url?(<img src={profile.url}  alt="" />):
+                    (<svg  xmlns="http://www.w3.org/2000/svg"
+                           width="100" 
+                           height="100"
+                           viewBox="0 0 24 24"  
+                           fill="none"  
+                           stroke="currentColor">
+                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                       <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                       <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
+                       <path d="M4 16v2a2 2 0 0 0 2 2h2" />
+                       <path d="M16 4h2a2 2 0 0 1 2 2v2" />
+                       <path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
+                       <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
+                    </svg>)}
+                    <h1>{profile.name.forename}</h1>
+                    <h2>{profile.lastname}</h2>
+                    <h4>{profile.nationality}</h4>
+                    <h4>{profile.release}</h4>
+                    <p>{profile.text}</p>
+                    <div>
+                        <p>{profile.team.toString()}</p>
+                    </div>
                 </div>
               
             </div>

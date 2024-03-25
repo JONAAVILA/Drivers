@@ -42,14 +42,13 @@ const Form = ()=>{
             ...prevProfile,
             team: teamsFiltered
         }))
-        return
     }
 
     const handleDriver = (event)=>{
         const { id, value } = event.target
         const valueNew = value.trim() ? value.split(" ").map(w => w[0].toUpperCase()+w.slice(1)).join(" ") : '';
-
         const validateError = validate({[id]:value})
+    
         if(validateError) setErrors(prevErrors => ({
             ...prevErrors,
             [id]: validateError ? validateError[id] : null
@@ -57,7 +56,9 @@ const Form = ()=>{
         if(id === 'name' && !validateError.name){
             setProfile(prevProfile =>({
                 ...prevProfile,
-                name:{forename: valueNew}
+                name:{
+                    forename: valueNew
+                }
             }))
         }
         if(id === 'lastname' && !validateError.lastname){
@@ -72,19 +73,19 @@ const Form = ()=>{
                 [id]: valueNew
             }))
         }
-        if(id === 'image' || id === 'description'){
-            if(!validateError.description){
-                setProfile(prevProfile =>({
-                    ...prevProfile,
-                    [id]: value
-                }))
-            }
-        }else{
+        if(id === 'image' && !validateError.image){
             setProfile(prevProfile =>({
                 ...prevProfile,
                 [id]: value
             }))
         }
+        if(id === 'description' && !validateError.description){
+            setProfile(prevProfile =>({
+                ...prevProfile,
+                [id]: value
+            }))
+        }   
+        console.log(validateError)
     }
     
     const handleSubmit = async (event)=>{
@@ -134,7 +135,7 @@ const Form = ()=>{
                            id='release' />
                     <div className='box_texarea' >
                         <textarea onChange={handleDriver}
-                                  placeholder="Description"
+                                    placeholder="Description"
                                   id='description'
                                   type="text"/>
                                   <div className='p_errors' >

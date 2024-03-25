@@ -49,10 +49,10 @@ const Form = ()=>{
                 ...prevProfile,
                 name:{forename: valueNew}
             }))
-        }else if(id === 'url'){
+        }else if(id === 'url' || id === 'text'){
             setProfile(prevProfile =>({
                 ...prevProfile,
-                url: value
+                [id]: value
             }))
         }else{
             setProfile(prevProfile =>({
@@ -73,32 +73,38 @@ const Form = ()=>{
                            <div className='p_errors' >
                                 {errors? (<p>{errors.name}</p>):(null)}
                            </div>
-                           
                     <input placeholder="Lastname"
                            onChange={handleDriver} 
                            id='lastname' 
                            type="text"/> 
-                           {errors? (<p className='p_errors' >{errors.lastname}</p>):(null)}
+                           <div className='p_errors' >
+                                {errors? (<p className='p_errors' >{errors.lastname}</p>):(null)}
+                           </div>
                     <input placeholder="Nationality" 
                            onChange={handleDriver} 
                            id='nationality' 
                            type="text"/> 
-                           {errors? (<p className='p_errors' >{errors.nationality}</p>):(null)}
+                           <div className='p_errors' >
+                                {errors? (<p className='p_errors' >{errors.nationality}</p>):(null)}
+                           </div>
                     <input placeholder='Url image'
                            onChange={handleDriver} 
                            id='url' 
                            type="url"/> 
-                           {errors? (<p className='p_errors' >{errors.url}</p>):(null)}
+                           <div className='p_errors' >
+                                {errors? (<p className='p_errors' >{errors.url}</p>):(null)}
+                           </div>
                     <input type="date" 
                            onChange={handleDriver} 
                            id='release' />
-                    <div>
-                        <textarea className='input_description' 
-                                  onChange={handleDriver}
+                    <div className='box_texarea' >
+                        <textarea onChange={handleDriver}
                                   placeholder="Description"
                                   id='text'
                                   type="text"/>
-                                  {errors? (<p className='p_errors' >{errors.text}</p>):(null) }
+                                  <div className='p_errors' >
+                                        {errors? (<p className='p_errors' >{errors.text}</p>):(null) }
+                                  </div>
                     </div>
                     <div>
                         <select value={selectTeam} onChange={(e) => setSelectedTeam(e.target.value)} id="team">

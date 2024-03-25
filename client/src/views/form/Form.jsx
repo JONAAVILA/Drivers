@@ -1,7 +1,8 @@
+import axios from 'axios';
 import { useState } from 'react';
-import './Form.css';
 import { useSelector } from 'react-redux';
 import validate from './validate';
+import './Form.css';
 
 const Form = ()=>{
     const teams = useSelector(state => state.teams)
@@ -81,6 +82,15 @@ const Form = ()=>{
         }
     }
 
+    const handleSubmit = async (event)=>{
+        try {
+            event.preventDefault()
+            const response = await axios.post('http://localhost:3001/drivers/create',)
+        } catch (error) {
+            return window.alert(error.message)
+        }
+    }
+
     return(
         <div className="conteiner_form" >
             <div className='box_inputs' >
@@ -137,7 +147,7 @@ const Form = ()=>{
                         <button onClick={handleTeams}>Select</button>  
                     </div>
                     <div>
-                        <button>Create</button>
+                        <button onClick={handleSubmit} >Create</button>
                     </div>
                     <div className='box_teams_map' >
                         {profile.team?.map(team =>{

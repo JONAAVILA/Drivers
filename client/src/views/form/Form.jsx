@@ -79,18 +79,24 @@ const Form = ()=>{
                     [id]: value
                 }))
             }
+        }else{
+            setProfile(prevProfile =>({
+                ...prevProfile,
+                [id]: value
+            }))
         }
     }
-
+    
     const handleSubmit = async (event)=>{
         try {
             event.preventDefault()
-            const response = await axios.post('http://localhost:3001/drivers/create',)
+            const response = await axios.post('http://localhost:3001/drivers/create', profile)
+            return window.alert(response.data.message)
         } catch (error) {
             return window.alert(error.message)
         }
     }
-
+    console.log(profile)
     return(
         <div className="conteiner_form" >
             <div className='box_inputs' >

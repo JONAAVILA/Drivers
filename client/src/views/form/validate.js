@@ -23,20 +23,20 @@ export default function validate (inputs){
         errors['nationality'] = ""
     }
 
-    const regexUrl = /^(http:\/\/|https:\/\/)/
-    const validateUrl = regexUrl.test(inputs.url)
-    if(inputs.url && !validateUrl ){
-        errors['url'] = "Invalid url"
+    const regexImage = /^(http:\/\/|https:\/\/)/
+    const validateImage = regexImage.test(inputs.image)
+    if(inputs.image && !validateImage ){
+        errors['image'] = "Invalid url"
     }else{
-        errors['url'] = ""
+        errors['image'] = ""
     }
 
-    const regexText = /^.{0,100}$/
-    const validateText= regexText.test(inputs.text)
-    if(inputs.text && !validateText ){
-        errors['text'] = "Text too long"
+    const regexDescription = /^.{0,100}$/
+    const validateDescription = regexDescription.test(inputs.description)
+    if(inputs.description && !validateDescription ){
+        errors['description'] = "Description too long"
     }else{
-        errors['text'] = ""
+        errors['description'] = ""
     }
 
     return errors;

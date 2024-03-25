@@ -12,9 +12,9 @@ const Form = ()=>{
         },
         lastname: '',
         nationality: '',
-        url: '',
+        image: '',
         release: '',
-        text: '',
+        description: '',
         team: []
     })
     const [ selectTeam, setSelectedTeam ] = useState("")
@@ -72,8 +72,8 @@ const Form = ()=>{
                 [id]: valueNew
             }))
         }
-        if(id === 'url' || id === 'text'){
-            if(!validateError.text){
+        if(id === 'image' || id === 'description'){
+            if(!validateError.description){
                 setProfile(prevProfile =>({
                     ...prevProfile,
                     [id]: value
@@ -118,10 +118,10 @@ const Form = ()=>{
                            </div>
                     <input placeholder='Url image'
                            onChange={handleDriver} 
-                           id='url' 
+                           id='image' 
                            type="url"/> 
                            <div className='p_errors' >
-                                {errors? (<p className='p_errors' >{errors.url}</p>):(null)}
+                                {errors? (<p className='p_errors' >{errors.image}</p>):(null)}
                            </div>
                     <input type="date" 
                            onChange={handleDriver} 
@@ -129,10 +129,10 @@ const Form = ()=>{
                     <div className='box_texarea' >
                         <textarea onChange={handleDriver}
                                   placeholder="Description"
-                                  id='text'
+                                  id='description'
                                   type="text"/>
                                   <div className='p_errors' >
-                                        {errors? (<p className='p_errors' >{errors.text}</p>):(null) }
+                                        {errors? (<p className='p_errors' >{errors.description}</p>):(null) }
                                   </div>
                     </div>
                     <div>
@@ -177,12 +177,12 @@ const Form = ()=>{
                 <h2>Preview</h2>
                 <div className="box_card_form">
                     <div className='back_image'
-                         style={{backgroundImage:`url(${profile.url})`,
+                         style={{backgroundImage:`url(${profile.image})`,
                                  backgroundSize: 'cover',
                                  backgroundRepeat: 'no-repeat',
                                  backgroundPosition: 'center', 
                                 }} ></div>
-                    {profile.url?(<img src={profile.url}  alt="" />):
+                    {profile.image?(<img src={profile.image}  alt="" />):
                     (<svg  xmlns="http://www.w3.org/2000/svg"
                            width="100" 
                            height="100"
@@ -201,7 +201,7 @@ const Form = ()=>{
                     {profile.lastname && <h2>{profile.lastname}</h2>}
                     {profile.nationality && <h4>{profile.nationality}</h4>}
                     {profile.release && <h4>{profile.release}</h4>}
-                    {profile.text && <p>{profile.text}</p>}
+                    {profile.description && <p>{profile.description}</p>}
                     <div>
                         {profile.team && <p>{profile.team.toString()}</p>}
                     </div>

@@ -31,7 +31,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: solid 3px #eaecf0;
+    border: solid 4px #ffffff;
     margin-top: -50px;
     margin-left: 30px;
 }
@@ -95,6 +95,7 @@
 
 .box_preview{
     min-width: 50%;
+    max-width: 50%;
 }
 
 .box_teams_map{
@@ -105,12 +106,36 @@
     grid-template-columns: repeat(4,1fr);
 }
 
-.box_teams_map p{
+.team_map{
+    display: flex;
+    justify-content:space-between ;
+    align-items: center;
     background-color: #eaecf0;
-    width: 125px;
-    font-size: .6rem;
+    width: 140px;
+    height: 16px;
     margin: 2px;
+    padding: 0 4px;
     border: solid 1px;
     border-radius: 1rem;
-    padding: 1px 3px;
+}
+
+.team_map p{
+    display: flex;
+    align-items: center;
+    font-size: .6rem;
+    margin: 0;
+}
+
+.team_map svg {
+    color: #ff8888;
+    display: flex;
+    align-content: center;
+    transition: ease-in 0.3s ;
+}
+
+.team_map path{
+    pointer-events: none;
+}
+.team_map svg:hover{
+    transform: rotate(45deg);
 }

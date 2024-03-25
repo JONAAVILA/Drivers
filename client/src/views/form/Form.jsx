@@ -34,34 +34,53 @@ const Form = ()=>{
         }
     } 
     
+    const handleDeleteTeam = (event)=>{
+        const { id } = event.target
+        const teamsFiltered = profile.team.filter(t => t !== id)
+        setProfile(prevProfile =>({
+            ...prevProfile,
+            team: teamsFiltered
+        }))
+        return
+    }
+
     const handleDriver = (event)=>{
         const { id, value } = event.target
         const valueNew = value.trim() ? value.split(" ").map(w => w[0].toUpperCase()+w.slice(1)).join(" ") : '';
 
         const validateError = validate({[id]:value})
-        console.log(validateError)
         if(validateError) setErrors(prevErrors => ({
             ...prevErrors,
             [id]: validateError ? validateError[id] : null
         }))
-        if(id === 'name'){
+        if(id === 'name' && !validateError.name){
             setProfile(prevProfile =>({
                 ...prevProfile,
                 name:{forename: valueNew}
             }))
-        }else if(id === 'url' || id === 'text'){
-            setProfile(prevProfile =>({
-                ...prevProfile,
-                [id]: value
-            }))
-        }else{
+        }
+        if(id === 'lastname' && !validateError.lastname){
             setProfile(prevProfile =>({
                 ...prevProfile,
                 [id]: valueNew
             }))
         }
+        if(id === 'nationality' && !validateError.nationality){
+            setProfile(prevProfile =>({
+                ...prevProfile,
+                [id]: valueNew
+            }))
+        }
+        if(id === 'url' || id === 'text'){
+            if(!validateError.text){
+                setProfile(prevProfile =>({
+                    ...prevProfile,
+                    [id]: value
+                }))
+            }
+        }
     }
-    console.log(profile)
+
     return(
         <div className="conteiner_form" >
             <div className='box_inputs' >
@@ -121,9 +140,25 @@ const Form = ()=>{
                         <button>Create</button>
                     </div>
                     <div className='box_teams_map' >
-                        {profile.team.map(team =>{
+                        {profile.team?.map(team =>{
                             return(
-                                <p>{team}</p>
+                                <div className='team_map' >
+                                    <p>{team}</p>
+                                    <svg id={team} onClick={handleDeleteTeam}
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         width="15"  
+                                         height="15"  
+                                         viewBox="0 0 24 24"  
+                                         fill="none"  
+                                         stroke="currentColor" 
+                                         stroke-width="3"  
+                                         stroke-linecap="round"  
+                                         stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M18 6l-12 12" />
+                                        <path d="M6 6l12 12" />
+                                    </svg>
+                                </div>
                             )
                         })}
                     </div>
@@ -152,13 +187,13 @@ const Form = ()=>{
                        <path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
                        <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
                     </svg>)}
-                    <h1>{profile.name.forename}</h1>
-                    <h2>{profile.lastname}</h2>
-                    <h4>{profile.nationality}</h4>
-                    <h4>{profile.release}</h4>
-                    <p>{profile.text}</p>
+                    {profile.name.forename && <h1>{profile.name.forename}</h1>}
+                    {profile.lastname && <h2>{profile.lastname}</h2>}
+                    {profile.nationality && <h4>{profile.nationality}</h4>}
+                    {profile.release && <h4>{profile.release}</h4>}
+                    {profile.text && <p>{profile.text}</p>}
                     <div>
-                        <p>{profile.team.toString()}</p>
+                        {profile.team && <p>{profile.team.toString()}</p>}
                     </div>
                 </div>
               

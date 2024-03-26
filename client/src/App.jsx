@@ -10,13 +10,7 @@ import Nav from './components/nav/Nav';
 import './App.css'
 
 function App() {
-  const dispatch = useDispatch();
   const location = useLocation()
-
-  useEffect(()=>{
-      dispatch(allDrivers())
-      dispatch(allTeams())
-  },[])
 
   return (
     <>

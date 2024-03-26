@@ -38,6 +38,10 @@ const SearchBar = ()=>{
     const handleTeams = (event)=>{
         dispatch(teamDrivers(event.target.value))
     }
+
+    const handleRefresh = ()=>{
+        dispatch(originDrivers('All'))
+    }
     
     return(
         <div className='box_searchbar' >
@@ -63,6 +67,7 @@ const SearchBar = ()=>{
                     )
               })} 
             </select>
+            <button onClick={handleRefresh} >refresh</button>
         </div>
     )
 }   

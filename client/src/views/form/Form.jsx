@@ -85,7 +85,12 @@ const Form = ()=>{
                 [id]: value
             }))
         }   
-        console.log(validateError)
+        if(id === 'release'){
+            setProfile(prevProfile =>({
+                ...prevProfile,
+                [id]: value
+            }))
+        }
     }
     
     const handleSubmit = async (event)=>{
@@ -97,7 +102,7 @@ const Form = ()=>{
             return window.alert(error.message)
         }
     }
-    console.log(profile)
+   
     return(
         <div className="conteiner_form" >
             <div className='box_inputs' >

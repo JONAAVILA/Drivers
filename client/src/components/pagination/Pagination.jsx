@@ -2,18 +2,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import './Pagination.css';  
 import { useEffect, useState } from "react";
-import { originDrivers } from "../../redux/Actions";
+import { allDrivers, originDrivers } from "../../redux/Actions";
 
 const Pagination = ()=>{
     const [ currentPage, setCurrentPage ] = useState(1)
     const itemsPerPage = 12
     const startIndex = (currentPage -1) * itemsPerPage
     const endIndex = startIndex + itemsPerPage
-    const drivers = useSelector(state => state.driversFiltered)
+    const state = useSelector(state => state.drivers)
+    const drivers = [...state.db,...state.api]
 
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch(originDrivers("All"))
+        dispatch(allDrivers())
     },[dispatch])
     
     const handlePrev = (event)=>{

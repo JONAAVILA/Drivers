@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Pagination.css';  
 import { useEffect, useState } from "react";
-import { allDrivers, originDrivers } from "../../redux/Actions";
+import { originDrivers } from "../../redux/Actions";
 
 const Pagination = ()=>{
     const [ currentPage, setCurrentPage ] = useState(1)
@@ -11,7 +11,7 @@ const Pagination = ()=>{
     const endIndex = startIndex + itemsPerPage
     const drivers = useSelector(state => state.driversFiltered)
     const dispatch = useDispatch()
-    
+
     useEffect(()=>{
         dispatch(originDrivers('All'))
     },[])
@@ -54,9 +54,9 @@ const Pagination = ()=>{
                                                                                                 <path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
                                                                                                 <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
                                                                                             </svg>)}
-                                <h1>{driver.name.forename}</h1>
+                                <h1 key={driver.id} >{driver.name.forename}</h1>
                                 <div className="box_teams">
-                                    <p>{driver.teams}</p>
+                                    {typeof driver.teams === 'string' ? <p key={driver.id} >{driver.teams}</p> : <p key={driver.id} >{driver.teams.toString()}</p>}
                                 </div>
                             </div>
                         </Link>

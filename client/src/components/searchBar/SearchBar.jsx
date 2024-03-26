@@ -67,7 +67,7 @@ const SearchBar = ()=>{
                     )
               })} 
             </select>
-            <button onClick={handleRefresh} >refresh</button>
+            <button onClick={handleRefresh} >Refresh</button>
         </div>
     )
 }   

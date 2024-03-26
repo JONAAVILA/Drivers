@@ -12,17 +12,19 @@ const Form = ()=>{
         },
         lastname: '',
         nationality: '',
-        image: '',
+        image: {
+            url: ''
+        },
         release: '',
         description: '',
-        team: []
+        teams: []
     })
     const [ selectTeam, setSelectedTeam ] = useState("")
     const [ errors, setErrors ] = useState({})
 
     const handleTeams = ()=>{
-        const valueFound = profile.team.find(team => team === selectTeam)
-        if(profile.team.length === 12) return window.alert('Too many teams')
+        const valueFound = profile.teams.find(team => team === selectTeam)
+        if(profile.teams.length === 12) return window.alert('Too many teams')
         if(valueFound){
             window.alert(`${selectTeam} is already found`)
         }else if(selectTeam.length === 0){
@@ -30,7 +32,7 @@ const Form = ()=>{
         }else{
             setProfile(prevProfile =>({
                 ...prevProfile,
-                team: [...prevProfile.team, selectTeam]
+                teams: [...prevProfile.teams, selectTeam]
             }))
         }
     } 
@@ -40,7 +42,7 @@ const Form = ()=>{
         const teamsFiltered = profile.team.filter(t => t !== id)
         setProfile(prevProfile =>({
             ...prevProfile,
-            team: teamsFiltered
+            teams: teamsFiltered
         }))
     }
 
@@ -76,7 +78,9 @@ const Form = ()=>{
         if(id === 'image' && !validateError.image){
             setProfile(prevProfile =>({
                 ...prevProfile,
-                [id]: value
+                image:{
+                    url: value
+                }
             }))
         }
         if(id === 'description' && !validateError.description){
@@ -162,7 +166,7 @@ const Form = ()=>{
                         <button onClick={handleSubmit} >Create</button>
                     </div>
                     <div className='box_teams_map' >
-                        {profile.team?.map(team =>{
+                        {profile.teams?.map(team =>{
                             return(
                                 <div className='team_map' >
                                     <p>{team}</p>
@@ -189,12 +193,12 @@ const Form = ()=>{
                 <h2>Preview</h2>
                 <div className="box_card_form">
                     <div className='back_image'
-                         style={{backgroundImage:`url(${profile.image})`,
+                         style={{backgroundImage:`url(${profile.image.url})`,
                                  backgroundSize: 'cover',
                                  backgroundRepeat: 'no-repeat',
                                  backgroundPosition: 'center', 
                                 }} ></div>
-                    {profile.image?(<img src={profile.image}  alt="" />):
+                    {profile.image.url?(<img src={profile.image.url}  alt="" />):
                     (<svg  xmlns="http://www.w3.org/2000/svg"
                            width="100" 
                            height="100"
@@ -215,7 +219,7 @@ const Form = ()=>{
                     {profile.release && <h4>{profile.release}</h4>}
                     {profile.description && <p>{profile.description}</p>}
                     <div>
-                        {profile.team && <p>{profile.team.toString()}</p>}
+                        {profile.teams && <p>{profile.teams.toString()}</p>}
                     </div>
                 </div>
               

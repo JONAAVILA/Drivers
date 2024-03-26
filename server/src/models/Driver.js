@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  sequelize.define('Driver', {
+  sequelize.define('driver', {
     name: {
       type: DataTypes.JSONB,
       allowNull: false,
@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     image:{
-      type: DataTypes.STRING
+      type: DataTypes.JSONB
     },
     nationality: {
       type: DataTypes.STRING,

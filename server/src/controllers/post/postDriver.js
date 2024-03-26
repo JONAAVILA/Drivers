@@ -9,7 +9,7 @@ const postDriver = async (req,res)=>{
             image,
             nationality,
             release,
-            team
+            teams
         } = req.body
 
         const driverPost = await postHandlerDriver(name,
@@ -18,7 +18,7 @@ const postDriver = async (req,res)=>{
                                                    image,
                                                    nationality,
                                                    release,
-                                                   team)
+                                                   teams)
         res.status(200).json(driverPost)
     } catch (error) {
         res.status(400).json({error:error.message})

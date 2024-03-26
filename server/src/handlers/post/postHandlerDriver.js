@@ -6,9 +6,9 @@ const postHandlerDriver = async (name,
                                  image,
                                  nationality,
                                  release,
-                                 team)=>{
+                                 teams)=>{
        
-    if(!name || !lastname || !nationality || !release || !description || !team){
+    if(!name || !lastname || !nationality || !release || !description || !teams){
         throw new Error('Parameters are missing')
     }
 
@@ -25,7 +25,7 @@ const postHandlerDriver = async (name,
 
         const teamFound = []
 
-        for(teamName of team){
+        for(teamName of teams){
             teamMatch = await Team.findOne({
                 where:{
                     name: teamName

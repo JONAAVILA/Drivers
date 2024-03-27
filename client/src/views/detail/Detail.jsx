@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
+import './Detail.css'
 
 const Detail = ()=>{
     const drivers = useSelector(state => state.drivers)
@@ -10,8 +11,11 @@ const Detail = ()=>{
 
     if(driverFound){
         return(
-            <div>
-                <h1>{driverFound.name.forename}</h1>
+            <div className="box_detail">
+                <div className="box_info" >
+                    <img src={driverFound.image.url} alt="" />
+                    <h1>{driverFound.name.forename}</h1>
+                </div>
             </div>
         )
     }else{

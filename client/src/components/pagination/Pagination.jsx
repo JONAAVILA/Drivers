@@ -38,7 +38,7 @@ const Pagination = ()=>{
                                 <div className="image_back_profile" style={{backgroundImage:`url(${driver.image.url})`,
                                                                             backgroundSize: 'cover',
                                                                             backgroundRepeat: 'no-repeat',
-                                                                            backgroundPosition: 'center', 
+                                                                            backgroundPositionY: '-150px', 
                                                                         }} ></div>
                                 {driver.image.url?(<img src={driver.image.url} alt="" />):(<svg  xmlns="http://www.w3.org/2000/svg"
                                                                                                  width="100" 

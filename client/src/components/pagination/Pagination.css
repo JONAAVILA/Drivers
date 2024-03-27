@@ -1,5 +1,5 @@
 .box_page{
-    width: 78vw;
+    width: 79vw;
     min-height: 60vh;
     border-radius: 1.5rem;
     margin-top: 1rem;
@@ -10,7 +10,7 @@
 
 .box_card{
     padding: 5px;
-    height: 220px;
+    height: 205px;
     margin: 5px;
     border-radius: 1rem;
     border: solid 1px #eaecf0;
@@ -39,16 +39,17 @@
     z-index: 10;
     border: solid 4px #ffffff;
     width: 80px;
-    height: 80px;
+    height: 100px;
     border-radius: 50%;
     margin-top: -45px;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .box_card h1{
     display: flex;
     justify-content: left;
     margin-left: 15px;
+    margin-top: 15px;
     margin-bottom: 0;
     font-size: 2rem;
 }
@@ -58,6 +59,7 @@
     justify-content: left;
     margin-left: 15px;
     padding-top: 0;
+    margin-top: 0;
     padding-bottom: 5px;
     font-size: .6rem;
 }

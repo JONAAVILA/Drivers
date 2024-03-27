@@ -1,0 +1,16 @@
+.box_detail{
+    width: 97vw;
+    height: 86%;
+    background-image: url('./../../assets/F1.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position-y: bottom;
+    background-size: 60%;
+    filter: grayscale(60%);
+}
+
+.box_detail img{
+    width: 170px;
+    border-radius: 50%;
+    border: solid 5px #ffffff;
+}

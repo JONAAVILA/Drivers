@@ -18,6 +18,16 @@ const Detail = ()=>{
                     <h1>{driverFound.name.forename}</h1>
                     <h2>{driverFound.name.surname}</h2>
                 </div>
+                <div className="box_items">
+                    <div className="item_left" >
+                        <h2>escuderias</h2>
+                        <h2>tems asdjasda</h2>
+                    </div>
+                    <div className="item_rigth" >
+                        <h2>ferrari</h2>
+                        <h2>sjdaskdjasdkas</h2>
+                    </div>
+                </div>
             </div>
         )
     }else{

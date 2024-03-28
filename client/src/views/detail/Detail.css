@@ -1,16 +1,56 @@
 .box_detail{
     width: 97vw;
-    height: 86%;
+    height: 81%;
     background-image: url('./../../assets/F1.svg');
     background-repeat: no-repeat;
     background-position: right;
     background-position-y: bottom;
     background-size: 60%;
-    filter: grayscale(60%);
+    display: flex;
 }
 
-.box_detail img{
+.box_info{
+    display: flex;
+    flex-direction: column;
+    padding-left: 30vh;
+}
+
+.box_info img{
     width: 170px;
     border-radius: 50%;
     border: solid 5px #ffffff;
+}
+
+.box_info h1{
+    margin-bottom: 0;
+}
+
+.box_info h2{
+    margin-top: 0;
+}
+
+.box_items{
+    display: flex;
+    justify-content: center;
+    width: 70%;
+}
+
+.item_left{
+    text-align: right;
+    padding-right: 15px;
+}
+
+.item_left h2{
+    margin: 0;
+    padding: 0;
+}
+
+.item_rigth{
+    text-align: left;
+    padding-left: 15px;
+}
+
+.item_rigth h2 {
+    margin: 0; 
+    padding: 0;
 }

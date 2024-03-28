@@ -22,10 +22,6 @@ a {
   text-decoration: inherit;
   transition: all ease 400ms;
 }
-a:hover {
-  transform: translateX(3px);
-  color: rgb(105, 105, 105);
-}
 
 body {
   margin: 0;

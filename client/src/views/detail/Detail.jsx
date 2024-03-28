@@ -4,12 +4,12 @@ import './Detail.css'
 
 const Detail = ()=>{
     const drivers = useSelector(state => state.drivers)
-    const pathname = useLocation()
-    const from = pathname.pathname.split("/").find(path => path === "api")
+    const location = useLocation()
+    const from = location.pathname.split("/").find(path => path)
     const { id } = useParams()
     const driverFound = drivers.api.find(driver => driver.id === parseInt(id))
     //cambiar modelo y stado del from de lasname -> name: {forename:"", surename:""}
-    console.log(driverFound)
+    console.log(from)
     if(driverFound){
         return(
             <div className="box_detail">

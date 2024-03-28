@@ -18,10 +18,14 @@ function App() {
         dispatch(allDrivers())
         dispatch(originDrivers('All'))
     })
+  let path = true
+  if(location.pathname === '/'){
+      path = false
+  }
 
   return (
     <>
-        {location.pathname != '/' && location.pathname != '*' ? <Nav /> : null}
+        {path ? <Nav /> : null}
       <Routes>
         <Route path='*' element={<Error404/>} />
         <Route path='/' element={<Landing/>} />

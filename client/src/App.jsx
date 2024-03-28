@@ -8,6 +8,7 @@ import Detail from './views/detail/Detail';
 import Form from './views/form/Form';
 import Nav from './components/nav/Nav';
 import './App.css'
+import Error404 from './views/404/404';
 
 function App() {
   const location = useLocation()
@@ -22,6 +23,7 @@ function App() {
     <>
         {location.pathname != '/' && location.pathname != '*' ? <Nav /> : null}
       <Routes>
+        <Route path='*' element={<Error404/>} />
         <Route path='/' element={<Landing/>} />
         <Route path='/home' element={<Home/>} />
         <Route path='/detail/db/:id' element={<Detail/>} />
